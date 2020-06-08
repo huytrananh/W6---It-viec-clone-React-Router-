@@ -7,7 +7,7 @@ export default function Jobs() {
     let [jobs, setJobs] = useState(null)
 
     const getJobslData = async() => {
-        let url = `http://localhost:3001/jobs/`
+        let url = `${process.env.REACT_APP_BACKEND_SERVER_URL}/jobs`
         let data = await fetch(url)
         let result = await data.json()
         console.log("The data result is: ", result)
@@ -22,15 +22,12 @@ export default function Jobs() {
         return(<div><Spinner animation="border" /></div>)
     }
     return (
-        <Container>
+        <div>
+            <div className="navbar"></div>
+            <Container>
             {jobs && jobs.map(item => <JobCard job={item} key={item.id} />)}
         </Container>
-        // <div>
-        //     <h1>{jobs.map(item => {
-        //         return (
-        //             <div>{item.img}</div>
-        //         )
-        //     })}</h1>
-        // </div>
+        </div>
+        
     )
 }

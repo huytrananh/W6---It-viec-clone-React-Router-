@@ -10,7 +10,7 @@ export default function JobCard(props) {
     let history = useHistory()
     
     const jobSelect = () => {
-        history.push(`/job/${job.id}`)
+        history.push(`/jobs/${job.id}`)
     }
 
     let job = props.job
@@ -36,9 +36,7 @@ export default function JobCard(props) {
                         </div>
                         <div>
                             {job.tags.map(tag => (
-                                <Badge variant="secondary" className="badge-style">
-                                {tag}
-                                </Badge>
+                                <Badge style={{marginLeft:'5px'}} variant="secondary" className="badge-style">{tag}</Badge>
                             ))}
                         </div>
                     </div>

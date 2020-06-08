@@ -12,7 +12,7 @@ export default function Detail(props) {
     let [detailItem, setDetailItem] = useState(null)
 
     const getDetailData = async() => {
-        let url = `http://localhost:3001/jobs/${id}`
+        let url = `${process.env.REACT_APP_BACKEND_SERVER_URL}/jobs/${id}`
         let data = await fetch(url)
         let result = await data.json()
         console.log("The data detail result is: ", result)
