@@ -19,8 +19,8 @@ export default function JobCard(props) {
         <div className="job-content" onClick={() => jobSelect()}>
             <Row className="row">
                 <Col xs={2}>
-                    <div className="jobcard-logo">
-                        <img src={job.img} />
+                    <div className="jobcard-logo" style={{textAlign: 'center'}}>
+                        <img src={'https://itviec.com/itviec-black-square-facebook.png'} style={{width:'50px'}}/>
                     </div>
                 </Col>
                 <Col xs={8}>

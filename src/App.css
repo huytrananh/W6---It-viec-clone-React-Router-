@@ -25,7 +25,7 @@
   
   .job-content:hover{
     border: 2px solid #e7e7e7;
-    background-color: lightcoral !important;
+    background-color: rgb(240, 240, 240) !important;
   }
   
   .date-location-box{
@@ -41,4 +41,43 @@
     background-color: black;
     height: 200px;
     width: 100%;
+    margin: 0px 0px 20px 0;
   }
+
+  .navbar-detail{
+    background-color: black;
+    height: 100px;
+    margin: 0px 0px 17px 0;
+    text-align: center;
+  }
+
+  .box1{
+    font-size: 10pt;
+    font-weight: bold;
+    color:rgb(121, 121, 121);
+    margin: 20px 0px 20px 0;
+  }
+
+  .box2, .box3{
+    margin: 0px 0px 20px 0;
+  }
+
+  .logo-detail{
+    text-align: center;
+  }
+
+  .main-section{
+    padding: 50px ;
+    background-color: white;
+  }
+
+  .body-detail{
+    background-color: lightgray;
+    height: 100vh;
+  }
+
+.navbar-button{
+  border-radius: 0px;
+  height: 70px;
+  width: 100%;
+}

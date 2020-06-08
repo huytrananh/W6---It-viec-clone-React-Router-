@@ -29,24 +29,30 @@ export default function Detail(props) {
         )
     }
     return (
-        <Container>
+        <div className="body-detail">
+        <div className="navbar-detail">
+                <img src={'https://itviec.com/itviec-black-square-facebook.png'} style={{width:'150px'}, {height:'100px'}}/>
+            </div>
+        <Container className="main-section">
             <Row>
-                <Col xs={2}></Col>
+                <Col xs={2} className="logo-detail">
+                    <img src={'https://itviec.com/itviec-black-square-facebook.png'} style={{width:'50px'}}/>
+                </Col>
                 <Col xs={10}>
-                    <h1>{detailItem.title}</h1>
-                    <h6>{detailItem.tags.map(tag => (<Badge style={{marginLeft:'10px'}} variant="secondary" className="badge-style">{tag}</Badge>))}</h6>
-                    <div>
-                        <h4>${detailItem.salary}</h4>
-                        <h4>{detailItem.city} District {detailItem.district}</h4>
-                        <h4><Moment fromNow>{detailItem.time}</Moment></h4>
+                    <h2>{detailItem.title}</h2>
+                    <h5>{detailItem.tags.map(tag => (<Badge style={{marginLeft:'10px'}} variant="secondary" className="badge-style">{tag}</Badge>))}</h5>
+                    <div className="box1">
+                        <div>${detailItem.salary}</div>
+                        <div>{detailItem.city} District {detailItem.district}</div>
+                        <div><Moment fromNow>{detailItem.time}</Moment></div>
                     </div>
-                    <div>
-                        <h1>Benefits</h1>
-                        <h4 >{detailItem.benefits.map(benefits => (<li>{benefits}</li>))}</h4>
+                    <div className="box2">
+                        <h2>Benefits</h2>
+                        <div >{detailItem.benefits.map(benefits => (<li>{benefits}</li>))}</div>
                     </div>
-                    <div>
-                        <h1>Description</h1>
-                        <h4>{detailItem.description}</h4>
+                    <div className="box3">
+                        <h2>Description</h2>
+                        <p>{detailItem.description}</p>
                     </div>
                     <Button variant="danger" style={{width:'100%'}}>Apply Now</Button>
                 </Col>
@@ -54,5 +60,6 @@ export default function Detail(props) {
             
             
         </Container>
+        </div>
     )
 }
