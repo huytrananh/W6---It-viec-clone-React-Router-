@@ -1,0 +1,38 @@
+.hotjob-label{
+    color: #fff;
+  background: #ff9e34;
+  min-width: 45px;
+  padding: 2px;
+  text-align: center;
+  }
+  
+  .job-content{
+    display: flex;
+    z-index: 3;
+    /* width: 100vh; */
+    justify-content: space-between;
+    border-top: 2px solid #e7e7e7;
+    border-top-color: rgb(231, 231, 231);
+    border-bottom: 2px solid #e7e7e7;
+    border-bottom-color: rgb(231, 231, 231);
+    overflow: hidden;
+    font-weight: 400;
+    padding: 27px 0;
+    -webkit-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+    margin-bottom: -2px;
+  }
+  
+  .job-content:hover{
+    border: 2px solid #e7e7e7;
+    background-color: lightcoral !important;
+  }
+  
+  .date-location-box{
+    font-size: 13px;
+    text-align: right;
+  }
+
+  .row{
+      width: 100%
+  }
