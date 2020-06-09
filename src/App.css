@@ -90,6 +90,7 @@
   font-size: 13pt !important;
   justify-content: center;
   height: 50px;
+  border: none !important;
 }
 
 .body-login{
