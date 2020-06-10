@@ -5,6 +5,7 @@ import Moment from 'react-moment'
 import 'moment-timezone'
 import Login from './Login'
 import { useHistory } from "react-router-dom";
+import {useSelector} from 'react-redux'
 
 
 
@@ -14,7 +15,7 @@ export default function Detail(props) {
         history.push(`/login`)
     }
     const { id } = useParams()
-
+    const user = useSelector(state => state.user)
     let [detailItem, setDetailItem] = useState(null)
 
     const getDetailData = async() => {
@@ -35,7 +36,9 @@ export default function Detail(props) {
     return (
         <div className="body-detail">
             <div className="navbar-detail">
-                    <img src={'https://itviec.com/itviec-black-square-facebook.png'} style={{width:'150px'}, {height:'100px'}}/>
+                <img src={'https://itviec.com/itviec-black-square-facebook.png'} style={{width:'150px'}, {height:'100px'}}/>
+                    <Col style={{textAlign:'right'}}>{user.isAuthenticated ? <div style={{color: 'white'}}>Welcome, {user.name}</div> 
+                    : <div style={{color: 'red'}}>Login</div>}</Col>
             </div>
             <Container className="main-section">
                 <Row>
@@ -58,9 +61,10 @@ export default function Detail(props) {
                             <h2>Description</h2>
                             <p>{detailItem.description}</p>
                         </div>
-                        <Button onClick={() => loginPage()      } variant="danger" style={{width:'100%'}} >Apply Now</Button>
+                        <Button onClick={loginPage} variant="danger" style={{width:'100%'}} >Apply Now</Button>
                     </Col>
                 </Row> 
+            
         </Container>
     </div>
     )

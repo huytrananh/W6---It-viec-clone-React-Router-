@@ -1,8 +1,30 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import {Tabs, Tab, Nav, Card, Button, Container, Form} from 'react-bootstrap'
-
+import { useDispatch } from "react-redux"
+import { useHistory } from 'react-router-dom'
 
 export default function Login() {
+    const dispatch = useDispatch()
+    const history = useHistory()
+
+
+    //use REF
+    const userNameRef = useRef(null)
+    const userEmailRef = useRef(null)
+    const userPasswordRef = useRef(null)
+
+
+    const login = (e) => {
+        e.preventDefault()
+        let user = {
+            name: userNameRef.current.value, // get value from current
+            email: userEmailRef.current.value,
+            password: userPasswordRef.current.value,
+        }
+        dispatch({type: 'LOGIN', payload: user}) //define an action
+        history.goBack()
+    }
+
     return (
         <div>
             <div className="navbar-detail">
@@ -28,11 +50,11 @@ export default function Login() {
                         </Button>
                         <hr></hr>
                         <Form.Group>
-                            <Form.Control style={{marginBottom:'10px'}}type="email" placeholder="Name" />
-                            <Form.Control style={{marginBottom:'10px'}} type="email" placeholder="Email" />
-                            <Form.Control style={{marginBottom:'10px'}} type="email" placeholder="Password" />
+                            <Form.Control ref={userNameRef} style={{marginBottom:'10px'}}type="email" placeholder="Name" />
+                            <Form.Control ref={userEmailRef} style={{marginBottom:'10px'}} type="email" placeholder="Email" />
+                            <Form.Control ref={userPasswordRef} style={{marginBottom:'10px'}} type="email" placeholder="Password" />
                         </Form.Group>
-                        <Button className='button-signup'>                        
+                        <Button onClick={login} className='button-signup'>                        
                             Sign up to Google
                         </Button>
                     </Card.Body>

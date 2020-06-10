@@ -3,12 +3,12 @@ import {Row, Col, Badge} from 'react-bootstrap'
 import Moment from 'react-moment'
 import { useHistory } from "react-router-dom";
 import 'moment-timezone'
-
+import {useSelector} from 'react-redux'
 
 
 export default function JobCard(props) {
     let history = useHistory()
-    
+    const user = useSelector(state => state.user)
     const jobSelect = () => {
         history.push(`/jobs/${job.id}`)
     }
@@ -26,7 +26,7 @@ export default function JobCard(props) {
                 <Col xs={8}>
                     <div className="jobcard-descriptions">
                         <h2 className="jobcard-title">{job.title}</h2>
-                        <div>$ {job.salary}</div>
+                        {user.isAuthenticated ? <div>$ {job.salary}</div> : <div>$ Login to see</div>}
                         <div>
                             <ul className="benefit-list">
                                 {job.benefits.map(benefit => (
