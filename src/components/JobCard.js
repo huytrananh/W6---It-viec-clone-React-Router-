@@ -7,8 +7,11 @@ import {useSelector} from 'react-redux'
 
 
 export default function JobCard(props) {
+    
     let history = useHistory()
+
     const user = useSelector(state => state.user)
+
     const jobSelect = () => {
         history.push(`/jobs/${job.id}`)
     }

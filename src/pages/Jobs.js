@@ -8,16 +8,7 @@ import {useSelector, useDispatch} from 'react-redux'
 
 export default function Jobs() {
 
-    const QUERYSTR_PREFIX = "q"
-    function useQuery() {
-        return new URLSearchParams(useLocation().search)
-    }
-
     let history = useHistory()
-    let query = useQuery()
-    let [keyword, setKeyword] = useState(query.get(QUERYSTR_PREFIX))
-    let [jobs, setJobs] = useState(null)
-    let [originalJobs, setOriginalJobs] = useState(null)
     const dispatch = useDispatch()
 
     const keywordRef = useRef(null)
@@ -25,32 +16,19 @@ export default function Jobs() {
 
     const search = (e) => {
         e.preventDefault()
-        dispatch({type: 'SEARCH', keyword: keywordRef.current.value, city: cityRef.current.value})
+        dispatch({type: 'SEARCH', keyword: keywordRef.current.value})
     }
 
     const user = useSelector(state => state.user)
-    
+    const jobs = useSelector(state => state.jobs)
 
-    const handleSearch = (e) => {
-        let filteredJobs = originalJobs
-        if (e) {
-          e.preventDefault()
-          history.push(`/jobs/?${QUERYSTR_PREFIX}=${encodeURIComponent(keyword)}`)
-        }
-        if (keyword) {
-          filteredJobs = originalJobs.filter(job =>
-            job.title.toLowerCase().includes(keyword.toLowerCase())
-          )
-        }
-        setJobs(filteredJobs);
-      }
     
     const getJobslData = async() => {
         let url = `${process.env.REACT_APP_BACKEND_SERVER_URL}/jobs`
         let data = await fetch(url)
         let result = await data.json()
         console.log("The data result is: ", result)
-        setJobs(result)
+        dispatch({type:'UPLOAD-JOBS', jobs: result})
     }
 
     useEffect(() => {
@@ -70,11 +48,11 @@ export default function Jobs() {
                         <Dropdown style={{textAlign:'center'}}>
                             <Dropdown.Toggle size="lg" id="dropdown-basic" style={{borderRadius:'0', color:'#6D6D6D', backgroundColor:'white'}}>Ho Chi Minh</Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Dropdown.Item ref={cityRef} href="#/action-1">All Cities</Dropdown.Item>
-                                <Dropdown.Item ref={cityRef} href="#/action-2">Ho Chi Minh</Dropdown.Item>
-                                <Dropdown.Item ref={cityRef} href="#/action-3">Ha Noi</Dropdown.Item>
-                                <Dropdown.Item ref={cityRef} href="#/action-3">Da Nang</Dropdown.Item>
-                                <Dropdown.Item ref={cityRef} href="#/action-3">Others</Dropdown.Item>
+                                <Dropdown.Item  href="#/action-1">All Cities</Dropdown.Item>
+                                <Dropdown.Item  href="#/action-2">Ho Chi Minh</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">Ha Noi</Dropdown.Item>
+                                <Dropdown.Item  href="#/action-3">Da Nang</Dropdown.Item>
+                                <Dropdown.Item  href="#/action-3">Others</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </Col>
